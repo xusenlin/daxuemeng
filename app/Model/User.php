@@ -32,7 +32,7 @@ class User extends Authenticatable
      * @return mixed
      */
     public static function getAllUserName(){
-        $allUsers = User::select('id','name','cellphone')->get();
+        $allUsers = User::select('id','nickname','cellphone')->get();
         return $allUsers;
     }
 

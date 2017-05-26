@@ -65,3 +65,95 @@ function modal_success(html_data,isRefresh,time) {
         window.location.reload();
     });
 }
+
+/**
+ * 显示内容为表单的模态框
+ * @param title 模态框的标题
+ * @param html_data 显示的视图
+ * @param callback  点击确定按钮的回调函数，不传不会显示确定按钮；
+ */
+function modal_form(title,html_data,callback){
+    var modal = $('#modal-form');
+    var info = $('#modal-form .modal-body');
+    var  modalTitle = $('#modal-form .modal-title');
+    var submitBtn =$('#btn-submit');
+
+    modal.attr("class","modal");
+    modalTitle.html(title);
+    if (html_data) info.html(html_data);
+    modal.modal('show');
+
+    if (Object.prototype.toString.call(callback)==='[object Function]'){
+        submitBtn.show();
+        submitBtn.click(function () {
+            if ( callback() ) {
+                modal.modal('hide');
+                submitBtn.unbind();
+            }
+
+        });
+
+        modal.on('hidden.bs.modal', function () {
+            submitBtn.unbind();
+        });
+    }
+}
+
+function modal_form_colse(){
+    $('#modal-form').modal('hide');
+}
+
+//仿php urlencode
+function urlencode(str) {
+    str = (str + '').toString();
+
+    return encodeURIComponent(str)
+        .replace(/!/g, '%21')
+        .replace(/'/g, '%27')
+        .replace(/\(/g, '%28')
+        .replace(/\)/g, '%29')
+        .replace(/\*/g, '%2A')
+        .replace(/%20/g, '+');
+}
+
+//仿php urldecode
+function urldecode(str) {
+    var ret = "";
+    for(var i=0;i<str.length;i++) {
+        var chr = str.charAt(i);
+        if(chr == "+") {
+            ret += " ";
+        }else if(chr=="%") {
+            var asc = str.substring(i+1,i+3);
+            if(parseInt("0x"+asc)>0x7f) {
+                ret += decodeURI("%"+ str.substring(i+1,i+9));
+                i += 8;
+            }else {
+                ret += String.fromCharCode(parseInt("0x"+asc));
+                i += 2;
+            }
+        }else {
+            ret += chr;
+        }
+    }
+    return ret;
+}
+
+function nl2br (str, is_xhtml) {
+    var breakTag = (is_xhtml || typeof is_xhtml === 'undefined') ? '<br />' : '<br>';
+    return (str + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1'+ breakTag +'$2');
+}
+
+/**
+ * 去掉str左边的指定的字符split
+ */
+function ltrim(str, split) {
+    return (str.substring(0, 1)==split)?str.substring(1):str;
+}
+
+/**
+ * 去掉str右边的指定的字符split
+ */
+function rtrim(str, split) {
+    return (str.substring(str.length-1)==split)?str.substring(0,str.length-1):str;
+}

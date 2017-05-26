@@ -10,7 +10,7 @@
 
     <div class="content-wrapper">
         @yield('content')
-
+        @include('public.admin.widgets.form')
         @include('public.admin.widgets.modal')
     </div>
 

@@ -15,7 +15,7 @@ class CreateUserPhotosTable extends Migration
         Schema::create('user_photos', function (Blueprint $table) {
             $table->increments('id');
             $table->string('message',100)->nullable()->comment('留言');
-            $table->string('photo')->comment('照片');
+            $table->text('photo')->comment('照片');
             $table->unsignedInteger('user_id')->comment('上传用户');
             $table->string('latitude',20)->comment('纬度');
             $table->string('longitude',20)->comment('经度');

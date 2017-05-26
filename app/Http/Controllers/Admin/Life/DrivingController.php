@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Life;
 
+use App\Model\Lease;
 use App\Model\Post;
 use Illuminate\Http\Request;
 
@@ -35,7 +36,7 @@ class DrivingController extends Controller
         return view('admin.life.driving_add')->with(['driving'=>$driving]);
     }
 
-    //保存驾校信息数据   还没有做
+    //保存驾校信息数据
     public function save(Request $request){
 
         try {
@@ -67,10 +68,10 @@ class DrivingController extends Controller
         if ($request->driving_id){
             $driving =  Post::find($request->driving_id);
         }else{
-            $driving = new Lease();
+            $driving = new Post();
         }
         $postData = $request->all();
-
+        $postData['type'] = Post::TYPE_DRIVING;
 
         $driving->fill($postData);
 

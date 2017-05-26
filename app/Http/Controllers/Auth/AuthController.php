@@ -36,6 +36,11 @@ class AuthController extends Controller
      */
     protected $username = 'cellphone';
 
+    /*
+        * 登录注册视图。
+        */
+    protected $loginView = 'auth.login';
+    protected $registerView = 'auth.register';
 
     /**
      * Create a new authentication controller instance.
@@ -44,6 +49,11 @@ class AuthController extends Controller
      */
     public function __construct()
     {
+        if ( isMobile()){
+            $this->redirectTo = '/' ;
+            $this->loginView = 'mobile.login';
+            $this->registerView = 'mobile.register';
+        }
         $this->middleware('guest', ['except' => 'logout']);
     }
 

@@ -33,11 +33,14 @@ class FileController extends Controller
         $destinationPath = 'uploads/photos/';
         // 获取图片文件名
         $filename = Auth::user()->id . '_' . time() . $photo->getClientOriginalName();
+
         // 移动图片
         $photo->move($destinationPath, $filename);
 
+        $filename = img_scale(public_path($destinationPath . $filename),296,197);
+
         return Response::json([
-            'filename' =>'/' . $destinationPath . $filename
+            'filename' => str_replace(public_path(),'', $filename)
         ]);
     }
 }

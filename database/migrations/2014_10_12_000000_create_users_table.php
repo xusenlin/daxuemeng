@@ -52,7 +52,6 @@ class CreateUsersTable extends Migration
             $table->string('signature',200)->nullable()->comment('个性签名');
             $table->string('hobby')->nullable()->comment('爱好，多个逗号分隔');
             $table->boolean('active')->default(1)->comment('账号是否激活');
-
             $table->rememberToken();
             $table->timestamps();
         });

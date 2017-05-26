@@ -10,7 +10,7 @@ if ( ! isset($select_name) ) $select_name = 'user';
 <select name="{{ $select_name }}" class="js_select form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true">
     <option value="">请选择</option>
     @foreach($users as  $user)
-        <option value="{{ $user->id }}" {{ $user->id == @$defaults ? "selected" : "" }}>{{$user->cellphone}}({{ $user->name }})</option>
+        <option value="{{ $user->id }}" {{ $user->id == @$defaults ? "selected" : "" }}>{{$user->cellphone}}({{ $user->nickname }})</option>
     @endforeach
 </select>
 @section('js')

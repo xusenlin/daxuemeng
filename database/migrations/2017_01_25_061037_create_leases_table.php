@@ -31,17 +31,17 @@ class CreateLeasesTable extends Migration
         });
 
         Schema::create('user_lease_flows', function (Blueprint $table) {
+            $table->increments('id');
             $table->unsignedInteger('user_id')->comment('用户');
             $table->unsignedInteger('lease_id')->comment('租赁');
             $table->enum('type',['favorite','collect'])->comment('点赞,收藏');
-
             $table->timestamps();
         });
 
         Schema::create('user_lease_comments', function (Blueprint $table) {
             $table->increments('id');
             $table->string('content', 500)->comment('回复内容');
-            $table->unsignedInteger('author')->comment('作者');
+            $table->unsignedInteger('author')->comment('作者');//author
             $table->unsignedInteger('lease_id')->comment('租赁');
             $table->unsignedInteger('reply_to')->nullable()->comment('回复哪条评论');
 

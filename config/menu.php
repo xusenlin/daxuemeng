@@ -63,13 +63,34 @@ return [
                 array(
                     'name'=>'课程表',
                     'icon'=>'fa-circle-o',
-                    'link'=>'admin',
+                    'link'=>'admin.course_list',
                 ),
                 array(
                     'name'=>'二手市场',
                     'icon'=>'fa-circle-o',
                     'link'=>'admin.secondary_list',
                 ),
+            )
+        ),
+        'basic_data'  =>array(
+            'name'=>'基础数据',
+            'icon'=>'fa-database',
+            'submenu'=>array(
+                array(
+                    'name'=>'学校管理',
+                    'icon'=>'fa-circle-o',
+                    'link'=>'admin.school_list',
+                ),
+                array(
+                    'name'=>'院系管理',
+                    'icon'=>'fa-circle-o',
+                    'link'=>'admin.department_list',
+                ),
+                array(
+                    'name'=>'专业管理',
+                    'icon'=>'fa-circle-o',
+                    'link'=>'admin.major_list',
+                )
             )
         ),
         'role'  =>array(

@@ -2,9 +2,6 @@
 <html>
 <head>
     <title>404 NOT FOUND</title>
-
-
-
     <style>
         html, body {
             height: 100%;

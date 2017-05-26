@@ -164,7 +164,7 @@ return [
          */
         Barryvdh\Debugbar\ServiceProvider::class,
 
-     
+        'Collective\Html\HtmlServiceProvider',
 
 
     ],
@@ -216,7 +216,8 @@ return [
         'Entrust'    => 'Zizaco\Entrust\EntrustFacade',
         //使用Debugbar门面
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
-
+        'Form' => 'Collective\Html\FormFacade',
+        'Html' => 'Collective\Html\HtmlFacade',
 
 
     ],
