@@ -6,6 +6,7 @@ use App\Model\Course;
 use App\Model\Department;
 use App\Model\Lease;
 use App\Model\Major;
+use App\Model\Panorama;
 use App\Model\PartTimeJob;
 use App\Model\Post;
 use App\Model\School;
@@ -37,12 +38,18 @@ class HomeController extends Controller
             ->join('users as u','u.id','=','p.user_id')
             ->limit(20)
             ->orderBy('p.created_at','desc')
-            ->select('u.id as u_id','p.id','u.avatar','u.nickname','p.message','p.photo','p.city','u.sex')
+            ->select('u.id as u_id','p.id','u.avatar','u.nickname','p.message','p.photo','p.city','u.sex','p.place')
             ->get();
         
+        $panoramas = Panorama::limit(20)
+            ->orderBy('created_at', 'desc')
+            ->get();
+
+
         $data['market'] = $market;
         $data['lease'] = $lease;
         $data['zipai'] = $zipai;
+        $data['panoramas'] = $panoramas;
 
         $viewName = isMobile() ? 'mobile.world':'home';
         return view($viewName)->with(['data'=>$data]);
@@ -68,13 +75,16 @@ class HomeController extends Controller
 
         $driving =Post::where('type','=',Post::TYPE_DRIVING)
             ->where('status','<>','recycled')
+            ->orderBy('created_at', 'desc')
             ->limit(30)
             ->get();
         $lease = Lease::limit(30)
             ->get();
         $jobs = PartTimeJob::limit(30)
+            ->orderBy('created_at', 'desc')
             ->get();
         $market = SecondaryMarket::limit(30)
+            ->orderBy('created_at', 'desc')
             ->get();
 
         $school = School::all()->toArray();
@@ -246,6 +256,7 @@ class HomeController extends Controller
     public function my_photo(){
 
         $record = UserPhoto::where('user_id','=',get_login_user())
+            ->orderBy('created_at', 'desc')
             ->limit(20)
             ->get();
 
@@ -305,6 +316,7 @@ class HomeController extends Controller
 
         $flow = UserPhotoFlow::where('user_id','=',get_login_user())
             ->where('type','=','collect')
+            ->orderBy('created_at', 'desc')
             ->select('photo_id')
             ->get();
 
@@ -319,9 +331,12 @@ class HomeController extends Controller
         $zipai =DB::table('user_photos as p')
             ->whereIn('p.id',$photo_id)
             ->join('users as u','u.id','=','p.user_id')
+            ->orderBy('created_at', 'desc')
             ->limit(20)
             ->select('u.id as u_id','p.id','u.avatar','u.nickname','p.message','p.photo','p.city','u.sex')
             ->get();
+        
+        
         
         return view('mobile.my_collect')->with(['zipai'=>$zipai]);
     }

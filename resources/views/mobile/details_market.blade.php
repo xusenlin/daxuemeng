@@ -34,7 +34,7 @@
             {{ $data->s_description }}
         </div>
         <div class="lease_c clearfix">
-            <div class="phone"><i class="iconfont icon-shouji"></i>15117875524</div>
+            <div class="phone"><i class="iconfont icon-shouji"></i>{{ $data->s_cellphone }}</div>
             <div class="tag">
                 <div class="details-tag tag_red">{{ $data->s_tag }}</div>
                 <div class="details-tag tag_yellow">包邮</div>

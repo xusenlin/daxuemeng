@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Model\School;
 use App\Model\Student;
 use App\Model\UserLeaseComment;
 use App\Model\UserLeaseFlow;
@@ -79,11 +80,23 @@ class MobileController extends Controller
                 file_put_contents(public_path($new_file), base64_decode(str_replace($result[1], '', $photo_base64)));
             }
         }
+        $userId = get_login_user();
         $photoModel = new UserPhoto();
+
         $photoModel->message = $request->form_data['user_message'];
         $photoModel->city = $request->form_data['city'];
         $photoModel->photo = join(',',$photoUrl);
-        $photoModel->user_id = get_login_user();
+        $photoModel->user_id = $userId;
+
+        $student = Student::where('user_id','=',$userId)
+            ->select('school_id')
+            ->first();
+
+        if ($student->school_id)
+            $school = School::find($student->school_id);
+     
+        $photoModel->place = isset($school)? $school->name : '花溪大学城';
+
         if ($photoModel->save())
             success('上传成功！');
         error('');

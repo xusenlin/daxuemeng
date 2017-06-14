@@ -7,7 +7,7 @@
     <title>@yield('title')-大学盟</title>
     <!-- 引入样式 -->
     <link rel="stylesheet" href="{{ asset('Mobile/css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('Mobile/css/my-style.css') }}">
+    <link rel="stylesheet" href="{{ asset('Mobile/css/my-style.css?v1') }}">
     <link rel="stylesheet" href="{{ asset('Mobile/font/iconfont.css') }}">
     @yield('style')
 </head>

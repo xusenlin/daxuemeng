@@ -1,16 +1,16 @@
 @extends('layouts.mobile')
 @section('title', '世界')
 @section('content')
-<div id="app">
+<div id="app" v-cloak>
     <div style="height: 49px"></div>
-    <mt-navbar v-model="selected " class="mint-header is-fixed" style="height: unset;padding: 0">
+    <mt-navbar v-model="selected " class="mint-header is-fixed" style="height: unset;padding: 0" v-cloak>
         <mt-tab-item id="1">最新</mt-tab-item>
         <mt-tab-item id="2">自拍</mt-tab-item>
         <mt-tab-item id="3">全景</mt-tab-item>
     </mt-navbar>
 
     <!-- tab-container -->
-    <mt-tab-container v-model="selected">
+    <mt-tab-container v-model="selected" v-cloak>
         <mt-tab-container-item id="1">
             <mt-swipe :auto="4000" style="   height: 200px;    padding: 10px 10px 0;">
                 <mt-swipe-item><div style="width: 100%;height: 100%;background-color: #26a2ff;color:#fff">1</div></mt-swipe-item>
@@ -83,19 +83,22 @@
         </mt-tab-container-item>
         <mt-tab-container-item id="3">
             <ul class="list-ul">
-                <li class="list-li">
-                    <a href="http://720yun.com/t/b9ejOswatw8" class="item-content">
-                        <div class="item-media">
-                            <img class="item-img" src="{{ asset('Mobile/img/pb.png') }}">
-                        </div>
-                        <div class="item-inner">
-                            <div class="item-title-row">
-                                <div class="item-title">平坝樱花农场720云</div>
+                @foreach($data['panoramas'] as $panoramas)
+                    <li class="list-li">
+                        <a href="{{ $panoramas->url }}" class="item-content">
+                            <div class="item-media">
+                                <img class="item-img" src="{{ asset($panoramas->cover) }}">
                             </div>
-                            <div class="item-text">2017.04.01</div>
-                        </div>
-                    </a>
-                </li>
+                            <div class="item-inner">
+                                <div class="item-title-row">
+                                    <div class="item-title">{{ $panoramas->name }}</div>
+                                </div>
+                             
+                                <div class="item-text">{{ $panoramas->created_at }}</div>
+                            </div>
+                        </a>
+                    </li>
+                @endforeach
             </ul>
         </mt-tab-container-item>
     </mt-tab-container>
@@ -131,7 +134,7 @@
                 html += thisObj.nickname;
                 html += '<i class="iconfont  icon-sex ';
                 html += (thisObj.sex==1) ? 'icon-nan' : 'icon-nv';
-                html += '"></i></h2> <div class="address" style="    margin: 0 9px 0;"> <span class="photo-address ellipsis" style="margin-left: 0">来自[花溪大学]</span> </div> </div>';
+                html += '"></i></h2> <div class="address" style="    margin: 0 9px 0;"> <span class="photo-address ellipsis" style="margin-left: 0">'+thisObj.place+'</span> </div> </div>';
                 html += '</div>';
                 html += '';
                 html += '';

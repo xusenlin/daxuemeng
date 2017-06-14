@@ -94,7 +94,7 @@ a{
 .mint-cell-label{
     display: block;
     white-space: nowrap;
-    width: 86%;
+    width: 80%;
     overflow: hidden;
     text-overflow: ellipsis;
 }
@@ -318,7 +318,7 @@ label {
 
 .photo-address{
     position: relative;
-    top: -2px;
+    top: 4px;
     margin-left: 10px;
     font-size: 12px;
     color: #a7a7a7;
@@ -648,4 +648,7 @@ label {
     margin-bottom: 4px;
     border-radius: 4px;
     background-color: #26a2ff;
+}
+[v-cloak] {
+    display: none;
 }

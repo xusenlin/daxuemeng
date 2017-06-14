@@ -61,6 +61,11 @@ return [
                     'link'=>'admin.driving_list',
                 ),
                 array(
+                    'name'=>'720云',
+                    'icon'=>'fa-circle-o',
+                    'link'=>'admin.720_list',
+                ),
+                array(
                     'name'=>'课程表',
                     'icon'=>'fa-circle-o',
                     'link'=>'admin.course_list',

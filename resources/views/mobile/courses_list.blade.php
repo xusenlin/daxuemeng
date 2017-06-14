@@ -17,7 +17,6 @@
 @endsection
 
 @section('content')
-    lorem
     <div id="app">
         <ul class="my-list-ul">
             <li class="ellipsis" style="font-size: 12px;box-shadow: 0 0 8px rgba(0,0,0,.3);">

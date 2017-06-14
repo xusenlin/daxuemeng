@@ -1,7 +1,7 @@
 @extends('layouts.mobile')
 @section('title', '用户中心')
 @section('content')
-    <div id="app">
+    <div id="app" v-cloak>
         @if( !Auth::user())
             <span style="display: block;margin-top: 100px;text-align: center;">你还未登录,暂时没有用户中心!</span>
             <br>

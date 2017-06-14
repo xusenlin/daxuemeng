@@ -1,7 +1,7 @@
 @extends('layouts.mobile')
 @section('title', '个人信息')
 @section('content')
-    <div id="app">
+    <div id="app" v-cloak>
             <div class="mine-heard">
                 <h2 class="user-name">@{{ user.nickname }}</h2>
                 <div class="user-avatar">

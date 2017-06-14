@@ -150,6 +150,11 @@ Route::group(['middleware' => ['web','auth','admin'],'prefix' => 'admin','namesp
         //删除驾校数据
         Route::get('/driving_school_delete/{info_id?}',['as' => 'admin.driving_delete', 'uses' => 'DrivingController@delete']);
 
+        //720
+        Route::get('/720_list',['as' => 'admin.720_list', 'uses' => 'PanoramaController@index']);
+        Route::get('/720_add/{id?}',['as' => 'admin.720_add', 'uses' => 'PanoramaController@add']);
+        Route::post('/720_save',['as' => 'admin.720_save', 'uses' => 'PanoramaController@save']);
+        
         //二手列表
         Route::get('/secondary_list',['as' => 'admin.secondary_list', 'uses' => 'SecondaryController@index']);
         //添加或者编辑二手

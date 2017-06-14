@@ -16,7 +16,7 @@
     </style>
 @endsection
 @section('content')
-    <div id="app">
+    <div id="app" v-cloak>
         <div style="height: 68px"></div>
         <div style="background: #efefef;height: 20px" ></div>
         <mt-navbar v-model="selected" class="mint-header is-fixed" style="height: unset">

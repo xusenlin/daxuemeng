@@ -25,10 +25,10 @@
                     <input style="display: none" type="file" accept="image/*"  capture="camera" id="camera" @change="img_change('camera')">
                 </div>
             </div>
-            <label>上传地点：</label>
-            <div class="address">
-                <i style="color: #a7a7a7" class="iconfont icon-address"></i><span class="photo-address">贵州省贵阳市花溪区花溪大学城</span>
-            </div>
+            {{--<label>上传地点：</label>--}}
+            {{--<div class="address">--}}
+                {{--<i style="color: #a7a7a7" class="iconfont icon-address"></i><span class="photo-address">贵州省贵阳市花溪区花溪大学城</span>--}}
+            {{--</div>--}}
     <br><br><br>
              <button type="submit" class="btn btn-primary btn-block" @click="submit_data">确认发表</button>
     <div  style="height: 55px"></div>
@@ -110,6 +110,7 @@
                         var res = response.data;
                         if(res.success){
                             _sel.$toast(res.msg);
+                            window.location.href='{{ route('home') }}';
                         }
                         _sel.$toast(res.msg);
                     })
