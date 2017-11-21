@@ -16,7 +16,7 @@
     </style>
 @endsection
 @section('content')
-    <div id="app" v-cloak>
+    <div id="app" v-cloak style="background:#fff">
         <div style="height: 68px"></div>
         <div style="background: #efefef;height: 20px" ></div>
         <mt-navbar v-model="selected" class="mint-header is-fixed" style="height: unset">
@@ -38,14 +38,14 @@
             </mt-tab-item>
             <mt-tab-item id="4">
                 <i class="iconfont icon-shijiaqingqiu"  style="color: #f39e34"></i><br>
-                驾校
+                校园吃货
             </mt-tab-item>
 
         </mt-navbar>
 
         <!-- tab-container -->
         <mt-tab-container v-model="selected">
-            <mt-tab-container-item id="1">
+            <mt-tab-container-item id="1" style="background:#f5f5f5">
                 <ul class="list-ul">
                     @foreach(@$data['market'] as $item)
                         <li class="list-li">
@@ -65,23 +65,23 @@
                     @endforeach
                 </ul>
             </mt-tab-container-item>
-            <mt-tab-container-item id="2">
+            <mt-tab-container-item id="2" style="background:#f5f5f5">
                 @foreach(@$data['jobs'] as $item)
-                    <a class="mint-cell" href="{{ route('details_job',$item->id) }}">
-                        <span class="mint-cell-mask"></span>
-                        <div class="mint-cell-left"></div>
-                        <div class="mint-cell-wrapper">
+                    <a class="mint-cell jz-row" href="{{ route('details_job',$item->id) }}">
+                        
+                        
+                        <div class="mint-cell-wrapper" style="background: none;">
                             <div class="mint-cell-title">
                                 <span class="mint-cell-text">{{ $item->name }}</span>
                                 <span class="mint-cell-label">{{ $item->position_desc }}</span>
                                 <div class="mint-cell-label">薪资水平：<span style="color: #ea1717">￥{{ $item->salary }}</span></div>
                             </div>
                         </div>
-                        <div class="mint-cell-right"></div> <i class="mint-cell-allow-right"></i>
+                         <i class="mint-cell-allow-right"></i>
                     </a>
                 @endforeach
             </mt-tab-container-item>
-            <mt-tab-container-item id="3">
+            <mt-tab-container-item id="3" style="background:#f5f5f5">
                 <ul class="list-ul">
                     @foreach(@$data['lease'] as $item)
                         <li class="list-li">
@@ -100,9 +100,18 @@
                     @endforeach
                 </ul>
             </mt-tab-container-item>
-            <mt-tab-container-item id="4">
+            <mt-tab-container-item id="4" style="background:#f5f5f5">
+                <mt-swipe :auto="4000" style="height: 200px;background: #fff;padding: 10px 10px 10px;">
+                    @for($i=0;$i<5;$i++)
+                        <mt-swipe-item>
+                            <a href="{{ route('details',@$data['food'][$i]->id) }}" style="width: 100%;height: 100%;background-color: #26a2ff;color:#fff">
+                                <img style="width: 100%;height: 100%" src="{{ @asset($data['food'][$i]->cover) }}" alt="">
+                            </a>
+                        </mt-swipe-item>
+                    @endfor
+                </mt-swipe>
                 <ul class="list-ul">
-                    @foreach(@$data['driving'] as $item)
+                    @foreach(@$data['food'] as $item)
                         <li class="list-li">
                             <a href="{{ route('details',$item->id) }}" class="item-content">
                                 <div class="item-media">
@@ -120,7 +129,7 @@
                 </ul>
                 <br><br>
             </mt-tab-container-item>
-            <mt-tab-container-item id="5">
+            <mt-tab-container-item id="5" style="background:#fff">
 
                 <ul class="my-list-ul">
                     @foreach($data['tree'] as $id => $school)

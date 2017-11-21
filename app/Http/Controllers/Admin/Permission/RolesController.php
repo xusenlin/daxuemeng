@@ -19,7 +19,10 @@ class RolesController extends Controller
         return view('admin.permission.roles_list')->with(['roles'=>$roles]);
     }
 
-    //用户和角色列表
+    /**
+     * 用户和角色列表
+     * @return $this
+     */
     public function roles_users(){
         $roleUser = DB::table('role_user as ru')
             ->join('users as u','ru.user_id','=','u.id')

@@ -2,10 +2,10 @@
 @section('title', '用户注册')
 @section('content')
     <div class="login-box">
-        {{--<div class="login-logo">--}}
-            {{--<a href="javascript:;">大学盟</a>--}}
-        {{--</div>--}}
-        <!-- /.login-logo -->
+        <div class="login-logo" style="text-align: center">
+            <i class="iconfont icon-daxue" style="position: relative;top: 21px;font-size: 56px;color: #3c8dbc;"></i>
+            <a href="javascript:;">大学盟</a>
+        </div>
         <div class="login-box-body">
             <p class="login-box-msg">注册一个用户</p>
             <form action="{{ url('/register') }}" method="post">

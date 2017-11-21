@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Home;
 
+use App\Model\Category;
 use App\Model\Course;
 use App\Model\Department;
 use App\Model\Lease;
@@ -26,13 +27,17 @@ use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
-    //世界
+    //校园
     public function index()
     {
 
-        $market = SecondaryMarket::limit(5)
-            ->get();
-        $lease = Lease::limit(5)
+        $leagueId = Category::getAllSiblingsAndSelfId(Post::CATEGORY_ID_IS_LEAGUE);
+
+        $league = Post::limit(20)
+            ->whereIn('category_id',$leagueId)
+            ->where('status','=','published')
+            ->orderBy('is_top', 'desc')
+            ->orderBy('id', 'desc')
             ->get();
         $zipai =DB::table('user_photos as p')
             ->join('users as u','u.id','=','p.user_id')
@@ -46,8 +51,8 @@ class HomeController extends Controller
             ->get();
 
 
-        $data['market'] = $market;
-        $data['lease'] = $lease;
+        //$data['market'] = $market;
+        $data['league'] = $league;
         $data['zipai'] = $zipai;
         $data['panoramas'] = $panoramas;
 
@@ -72,9 +77,9 @@ class HomeController extends Controller
 
     //生活
     public function life(){
-
-        $driving =Post::where('type','=',Post::TYPE_DRIVING)
-            ->where('status','<>','recycled')
+        $foodId = Category::getAllSiblingsAndSelfId(Post::CATEGORY_ID_IS_FOOD);
+        $food =Post::whereIn('category_id',$foodId)
+            ->where('status','=','published')
             ->orderBy('created_at', 'desc')
             ->limit(30)
             ->get();
@@ -94,7 +99,7 @@ class HomeController extends Controller
         $data['tree'] = $this->orderSchoolDepartmentMajorsToTree($school,$department,$majors);
         
         
-        $data['driving'] = $driving;
+        $data['food'] = $food;
         $data['lease'] = $lease;
         $data['jobs'] = $jobs;
         $data['market'] = $market;

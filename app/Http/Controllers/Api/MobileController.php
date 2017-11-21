@@ -92,7 +92,7 @@ class MobileController extends Controller
             ->select('school_id')
             ->first();
 
-        if ($student->school_id)
+        if (@$student->school_id)
             $school = School::find($student->school_id);
      
         $photoModel->place = isset($school)? $school->name : '花溪大学城';

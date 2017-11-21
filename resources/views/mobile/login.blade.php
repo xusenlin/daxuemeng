@@ -1,10 +1,22 @@
-@extends('layouts.mobile')
-@section('title', '用户登录')
-@section('content')
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>用户登录-大学盟</title>
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="{{ asset('Mobile/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('Mobile/css/my-style.css?v1') }}">
+    <link rel="stylesheet" href="{{ asset('Mobile/font/iconfont.css') }}">
+</head>
+
+<body>
     <div class="login-box">
-        {{--<div class="login-logo">--}}
-            {{--<a href="javascript:;">大学盟</a>--}}
-        {{--</div>--}}
+        <div class="login-logo" style="text-align: center">
+            <i class="iconfont icon-daxue" style="position: relative;top: 21px;font-size: 56px;color: #3c8dbc;"></i>
+            <a href="javascript:;">大学盟</a>
+        </div>
         <div class="login-box-body">
             <p class="login-box-msg">登录</p>
             <form action="{{ url('/login') }}" method="post">
@@ -54,4 +66,10 @@
         </div>
         <!-- /.login-box-body -->
     </div>
-@endsection
+
+<script src="{{ asset('Mobile/js/vue.js') }}"></script>
+<script src="{{ asset('Mobile/js/axios.min.js') }}"></script>
+<!-- Mint UI -->
+<script src="{{ asset('Mobile/js/mint.js') }}"></script>
+</body>
+</html>

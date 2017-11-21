@@ -3,45 +3,47 @@
 @section('content')
     <div id="app" v-cloak>
             <div class="mine-heard">
-                <h2 class="user-name">@{{ user.nickname }}</h2>
+
                 <div class="user-avatar">
                     <i @click="edit_avatar()" class="iconfont icon-fabiao" style="position: absolute; right: 13px; top: 3px;"></i>
                     <img :src=" user.avatar ? user.avatar : 'Backend/image/user.jpg'" alt="">
                 </div>
+                <h2 class="user-name">@{{ user.nickname }}</h2>
+                <h3 class="user-name" style="font-size: 12px;color: #c8deea">@{{ user.signature }}</h3>
             </div>
             <ul class="mine-list personal">
                 <li class="mint-cell">
                     姓名:@{{ user.name }}
-                    <i @click="edit_info('name')" class="iconfont icon-fabiao pull-right" style="margin-right: 15px"></i>
+                    <i @click="edit_info('name')" class="iconfont icon-edit2"></i>
                 </li>
                 <li class="mint-cell">
                     昵称:@{{ user.nickname }}
-                    <i @click="edit_info('nickname')" class="iconfont icon-fabiao pull-right" style="margin-right: 15px"></i>
+                    <i @click="edit_info('nickname')" class="iconfont icon-edit2" ></i>
                 </li>
                 <li class="mint-cell">
                     手机:@{{ user.cellphone }}
-                    <i @click="edit_info('cellphone')" class="iconfont icon-fabiao pull-right" style="margin-right: 15px"></i>
+                    <i @click="edit_info('cellphone')" class="iconfont icon-edit2" ></i>
                 </li>
                 <li class="mint-cell">
                     邮箱:@{{ user.email }}
-                    <i @click="edit_info('email')" class="iconfont icon-fabiao pull-right" style="margin-right: 15px"></i>
+                    <i @click="edit_info('email')" class="iconfont icon-edit2"></i>
                 </li>
                 <li class="mint-cell">
                     QQ:@{{ user.qq }}
-                    <i @click="edit_info('qq')" class="iconfont icon-fabiao pull-right" style="margin-right: 15px"></i>
+                    <i @click="edit_info('qq')" class="iconfont icon-edit2" ></i>
                 </li>
                 <li class="mint-cell">
                     性别:@{{ sex_value }}
-                    <i @click="display_sex_change()" class="iconfont icon-fabiao pull-right" style="margin-right: 15px"></i>
+                    <i @click="display_sex_change()" class="iconfont icon-edit2" ></i>
 
                 </li>
                 <li class="mint-cell" style="line-height: 24px">
                     个性签名: <div style="font-size: 12px;text-indent: 2em">@{{ user.signature }}</div>
-                    <i @click="edit_info('signature')" class="iconfont icon-fabiao pull-right" style="margin-right: 15px;"></i>
+                    <i @click="edit_info('signature')" style="top:0" class="iconfont icon-edit2"></i>
                 </li>
                 <li class="mint-cell" >
                     学校: @{{ school_info[0].school }}
-                    <i @click="student_info()" class="iconfont icon-fabiao pull-right" style="margin-right: 15px;"></i>
+                    <i @click="student_info()" class="iconfont icon-edit2"></i>
                 </li>
                 <li class="mint-cell" >
                     系: @{{ school_info[1].department }}
@@ -51,11 +53,11 @@
                 </li>
                 <li class="mint-cell" >
                     年级: @{{ grade }}
-                    <i @click="edit_info('student_grade')" class="iconfont icon-fabiao pull-right" style="margin-right: 15px;"></i>
+                    <i @click="edit_info('student_grade')" class="iconfont icon-edit2"></i>
                 </li>
                 <li class="mint-cell" >
                     班级:  @{{ s_class }}
-                    <i @click="edit_info('student_class')" class="iconfont icon-fabiao pull-right" style="margin-right: 15px;"></i>
+                    <i @click="edit_info('student_class')" class="iconfont icon-edit2"></i>
                 </li>
 
                 <input style="display: none" type="file"  accept="image/*" multiple="" id="img" @change="avatar_change()"  >

@@ -44,8 +44,8 @@
                             @foreach($posts as $post)
                                 <tr>
                                     <td>{{ $post->id }}</td>
-                                    <td>{{ substr($post->title,0,40).'...' }}</td>
-                                    <td>{{ substr($post->excerpt,0,70).'...' }}</td>
+                                    <td>{{ mb_substr($post->title,0,40).'...' }}</td>
+                                    <td>{{ mb_substr($post->excerpt,0,70).'...' }}</td>
                                     <td>
                                         <span class="label label-danger">已删除</span>
                                     </td>

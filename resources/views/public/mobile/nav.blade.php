@@ -4,7 +4,7 @@ if ( ! isset($active) ) $active = '';
 <div class="mint-tabbar is-fixed">
     <a href="{{ $active == '世界' ? 'javascript:;' : route('home') }}" class="mint-tab-item {{ $active == '世界' ? 'is-selected':'' }}">
         <div class="mint-tab-item-icon">
-            <i class="iconfont icon-tubiaozhizuomoban"></i>
+            <i class="iconfont icon-fangzi"></i>
         </div>
         <div class="mint-tab-item-label">
             校园

@@ -39,7 +39,13 @@ return [
                     'icon'=>'fa-circle-o',
                     'link'=>'admin',
                 ),
+                'swipe_list'  =>array(
+                    'name'=>'首页轮播图',
+                    'icon'=>'fa-circle-o',
+                    'link'=>'admin.swipe',
+                ),
             ),
+
         ),
         'live'  =>array(
             'name'=>'生活管理',
@@ -56,11 +62,6 @@ return [
                     'link'=>'admin.leases_list',
                 ),
                 array(
-                    'name'=>'驾校',
-                    'icon'=>'fa-circle-o',
-                    'link'=>'admin.driving_list',
-                ),
-                array(
                     'name'=>'720云',
                     'icon'=>'fa-circle-o',
                     'link'=>'admin.720_list',
@@ -74,6 +75,22 @@ return [
                     'name'=>'二手市场',
                     'icon'=>'fa-circle-o',
                     'link'=>'admin.secondary_list',
+                ),
+            )
+        ),
+        'post'  =>array(
+            'name'=>'文章管理',
+            'icon'=>'fa-paste',
+            'submenu'=>array(
+                array(
+                    'name'=>'文章列表',
+                    'icon'=>'fa-circle-o',
+                    'link'=>'admin.posts_list',
+                ),
+                array(
+                    'name'=>'编辑文章',
+                    'icon'=>'fa-circle-o',
+                    'link'=>'admin.post_edit',
                 ),
             )
         ),
@@ -96,6 +113,17 @@ return [
                     'icon'=>'fa-circle-o',
                     'link'=>'admin.major_list',
                 )
+            )
+        ),
+        'category'  =>array(
+            'name'=>'分类管理',
+            'icon'=>'fa-folder-open',
+            'submenu'=>array(
+                array(
+                    'name'=>'分类列表',
+                    'icon'=>'fa-circle-o',
+                    'link'=>'admin.category_list',
+                ),
             )
         ),
         'role'  =>array(

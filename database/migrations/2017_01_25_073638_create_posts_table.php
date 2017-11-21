@@ -18,7 +18,8 @@ class CreatePostsTable extends Migration
             $table->longText('content')->nullable()->comment('内容');
             $table->text('excerpt')->nullable()->comment('摘要');
             $table->enum('status',['draft','published','recycled'])->default('draft')->comment('状态');
-            $table->string('type', 45)->comment('类型');
+            $table->string('type', 45)->nullable()->comment('类型');
+            $table->integer('category_id')->nullable()->comment('分类id');
             $table->string('tag', 200)->nullable()->comment('标签');
             $table->string('cover')->nullable()->comment('封面');
             $table->dateTime('published_time')->nullable()->comment('发布时间');

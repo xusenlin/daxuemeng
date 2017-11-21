@@ -19,10 +19,13 @@
 
         <h1>{{ $data->title }}</h1>
         <div class="details-data">{{ substr($data->created_at,0,10) }}</div>
-        <div class="details-tag">驾校</div>
+        <div class="details-tag">{{ $data->tag }}</div>
 
         <div class="details-content">
             {{ $data->content  }}
+            @foreach(explode(',',$data->meta_data) as $item)
+                <img src="{{ asset($item) }}" alt="">
+            @endforeach
         </div>
 
     </div>

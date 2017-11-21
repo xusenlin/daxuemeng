@@ -34,10 +34,10 @@
                     <!-- /.box-header -->
                     <div class="box-body table-responsive no-padding">
                         <table class="table table-hover">
-                            <tbody>
+                            <tbody valign="middle">
                             <tr>
                                 <th>ID</th>
-                                <th>720云名称</th>
+                                <th width="160px">720云名称</th>
                                 <th>720云Url</th>
                                 <th>720云备注</th>
                                 <th>720云封面 </th>
@@ -46,7 +46,7 @@
                             @foreach($panoramas as $panorama)
                                 <tr>
                                     <td>{{ $panorama->id }}</td>
-                                    <td>{{ $panorama->name }}</td>
+                                    <td valign="middle">{{ $panorama->name }}</td>
                                     <td>{{ $panorama->url }}</td>
                                     <td>{{ $panorama->remarks }}</td>
                                     <td><img style="height: 25px;" src="{{ asset($panorama->cover) }}" alt=""></td>

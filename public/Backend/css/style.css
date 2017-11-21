@@ -1,3 +1,10 @@
+.el-row{
+    width:100%
+}
+.el-tree-node__content {
+    height: 40px;
+    line-height: 40px;
+}
 .login-check{
     margin-left: 20px;
 }
@@ -34,4 +41,7 @@
     height: 34px;
     border: 1px solid #d2d6de;
      border-radius: 0px;
+}
+[v-cloak] {
+    display: none;
 }

@@ -119,6 +119,34 @@ Route::group(['middleware' => ['web','auth','admin'],'prefix' => 'admin','namesp
     });
 
     /**
+     * 照片管理
+     */
+    Route::group(['namespace' => 'Photo'], function () {
+
+        //首页轮播图
+        Route::get('/swipe',['as' => 'admin.swipe', 'uses' => 'PhotoController@swipe']);
+        //首页轮添加
+        Route::get('/swipe_add/{name?}',['as' => 'admin.swipe_add', 'uses' => 'PhotoController@swipe_add']);
+        //首页轮保存
+        Route::post('/swipe_save',['as' => 'admin.swipe_save', 'uses' => 'PhotoController@swipe_save']);
+
+    });
+
+    /**
+     * 文章路由
+     */
+    Route::group(['namespace' => 'Post'], function () {
+        //post
+        Route::get('/posts_list/{id?}',['as' => 'admin.posts_list', 'uses' => 'PostController@index']);
+        //添加或者编辑驾校
+        Route::get('/post_edit/{info_id?}',['as' => 'admin.post_edit', 'uses' => 'PostController@edit']);
+        //保存驾校数据
+        Route::post('/post_save',['as' => 'admin.post_save', 'uses' => 'PostController@save']);
+        //删除驾校数据
+        Route::get('/post_delete/{info_id?}',['as' => 'admin.post_delete', 'uses' => 'PostController@delete']);
+    });
+
+    /**
      * 生活管理
      */
     Route::group(['namespace' => 'Life'], function () {
@@ -139,16 +167,6 @@ Route::group(['middleware' => ['web','auth','admin'],'prefix' => 'admin','namesp
         Route::post('/lease_save',['as' => 'admin.leases_save', 'uses' => 'LeaseController@save']);
         //删除租赁数据
         Route::get('/lease_delete/{lease_id?}',['as' => 'admin.lease_delete', 'uses' => 'LeaseController@delete']);
-
-
-        //驾校列表
-        Route::get('/driving_school_list',['as' => 'admin.driving_list', 'uses' => 'DrivingController@index']);
-        //添加或者编辑驾校
-        Route::get('/driving_school_add/{info_id?}',['as' => 'admin.driving_add', 'uses' => 'DrivingController@add']);
-        //保存驾校数据
-        Route::post('/driving_school_save',['as' => 'admin.driving_save', 'uses' => 'DrivingController@save']);
-        //删除驾校数据
-        Route::get('/driving_school_delete/{info_id?}',['as' => 'admin.driving_delete', 'uses' => 'DrivingController@delete']);
 
         //720
         Route::get('/720_list',['as' => 'admin.720_list', 'uses' => 'PanoramaController@index']);
@@ -182,6 +200,21 @@ Route::group(['middleware' => ['web','auth','admin'],'prefix' => 'admin','namesp
 
     });
 
+
+    /**
+     * 分类管理
+     */
+    Route::group(['namespace' => 'Category'], function () {
+
+        Route::get('/category_list',['as' => 'admin.category_list', 'uses' => 'CategoryController@index']);
+        //API
+        Route::get('/get_children_node/{id?}',['as' => 'admin.category_get_node', 'uses' => 'CategoryController@getChildrenNode']);
+        Route::post('/category_edit',['as' => 'admin.category_edit', 'uses' => 'CategoryController@edit']);
+        Route::post('/category_add',['as' => 'admin.category_add', 'uses' => 'CategoryController@add']);
+        Route::post('/category_destroy',['as' => 'admin.category_destroy', 'uses' => 'CategoryController@destroy']);
+
+    });
+
     /**
      * 基础数据
      */
@@ -209,7 +242,6 @@ Route::group(['middleware' => ['web','auth','admin'],'prefix' => 'admin','namesp
     Route::get('/recycle_bin',['as' => 'admin.recycle_bin', 'uses' => 'OtherController@recycle_bin']);
     //恢复post
     Route::get('/recover_post/{post_id?}',['as' => 'admin.recover_post', 'uses' => 'OtherController@recover_post']);
-
 
 });
 

@@ -18,6 +18,7 @@
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="{{ asset('AdminLTE/dist/css/Skins.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('Element/index.css') }}">
     <link rel="stylesheet" href="{{ asset('Backend/css/style.css') }}">
     @yield('style')
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
